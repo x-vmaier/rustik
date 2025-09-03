@@ -1,9 +1,11 @@
 mod bone;
 mod joint;
+mod skeleton;
 
 use bone::Bone;
 use joint::Joint;
 use macroquad::prelude::*;
+use skeleton::Skeleton;
 
 #[macroquad::main("RustIK")]
 async fn main() {
@@ -16,13 +18,15 @@ async fn main() {
     // Link bones
     let joint = Joint::new(&bone1, &bone2);
 
+    // Create skeleton
+    let mut skeleton = Skeleton::new();
+    skeleton.add_joint(joint);
+
     loop {
         clear_background(BLACK);
 
         // Render skeleton
-        bone1.render();
-        bone2.render();
-        joint.render();
+        skeleton.render();
 
         next_frame().await
     }

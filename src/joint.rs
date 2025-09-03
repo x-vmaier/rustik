@@ -13,6 +13,10 @@ impl<'a> Joint<'a> {
 
     pub fn render(&self) {
         let pos = self.parent.end();
+
+        self.parent.render();
+        self.child.render();
+
         draw_circle(pos.x, pos.y, 10.0, GREEN);
     }
 }

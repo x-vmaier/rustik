@@ -9,9 +9,9 @@ async fn main() {
     let center = vec2(screen_width() / 2.0, screen_height() / 2.0);
 
     // Create skeleton
-    let mut skeleton = Skeleton::new(Some(center));
-    skeleton.add_bone(100.0, 0.0);
-    skeleton.add_bone(100.0, 0.0);
+    let mut skeleton = Skeleton::new(center);
+    skeleton.add_bone(80.0, 0.0);
+    skeleton.add_bone(80.0, 0.0);
 
     loop {
         // Get mouse pos as vector

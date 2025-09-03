@@ -1,9 +1,9 @@
 use macroquad::prelude::*;
 
 pub struct Bone {
-    start: Vec2,
-    length: f32,
-    angle: f32,
+    pub start: Vec2,
+    pub length: f32,
+    pub angle: f32,
 }
 
 impl Bone {
@@ -17,7 +17,7 @@ impl Bone {
 
     pub fn end(&self) -> Vec2 {
         self.start
-            + Vec2::new(
+            + vec2(
                 self.length * self.angle.cos(),
                 self.length * self.angle.sin(),
             )
@@ -26,5 +26,9 @@ impl Bone {
     pub fn render(&self) {
         let end = self.end();
         draw_line(self.start.x, self.start.y, end.x, end.y, 4.0, WHITE);
+
+        // Draw circles at joints
+        draw_circle(self.start.x, self.start.y, 2.0, YELLOW);
+        draw_circle(end.x, end.y, 2.0, GREEN);
     }
 }
